@@ -15,6 +15,10 @@ const KioskProvider = ({ children }) => {
     getCategories();
   }, []);
 
+  useEffect(() => {
+    setCurrentCategory(categories[0]);
+  }, [categories]);
+
 
   const handleClickCategory = id =>{
     const category = categories.filter(cat=>cat.id === id);
