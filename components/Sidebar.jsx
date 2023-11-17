@@ -1,15 +1,18 @@
-import useKiosk from "../hooks/useKiosk"
+import Image from "next/image";
+import useKiosk from "../hooks/useKiosk";
+import { Category } from "./Category";
 
 export const Sidebar = () => {
-    const {categories, algo} = useKiosk()
+  const { categories } = useKiosk();
+  console.log(categories);
   return (
-    <div>sidebar - 
-        {/* {algo} */}
-        <ul>
-            {categories?.map(cat=>(
-                <li key={cat.id}>{cat.name}</li>
-            ))}
-        </ul>
-    </div>
-  )
-}
+    <>
+      <Image width={300} height={100} src="/assets/img/logo.svg" alt="logo" />
+      <div>
+        {categories.map((cat) => (
+          <Category key={cat.id} category={cat}/>
+        ))}
+      </div>
+    </>
+  );
+};

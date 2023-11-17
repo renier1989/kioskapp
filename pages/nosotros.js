@@ -1,5 +1,11 @@
+import { Layout } from "@/layout/Layout";
+
 const nosotros = () => {
-  return <div>nosotros</div>;
+  return (
+    <Layout>
+      <div>nosotros</div>
+    </Layout>
+  );
 };
 
 export default nosotros;
