@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 
 export const ModalProduct = () => {
-  const { product, handleChangeModal } = useKiosk();
-  const [quantity, setQuantity] = useState(0);
+  const { product, handleChangeModal,handleAddToOrder } = useKiosk();
+  const [quantity, setQuantity] = useState(1);
   console.log(product);
   return (
     <div className="md:flex gap-10">
@@ -86,6 +86,13 @@ export const ModalProduct = () => {
             </svg>
           </button>
         </div>
+
+            <button className="bg-indigo-600 hover:bg-indigo-800 px-5 py-2 mt-5 text-white font-bold uppercase rounded"
+                onClick={()=>handleAddToOrder({...product , quantity})}
+            >
+                Add to the Order
+            </button>
+
       </div>
     </div>
   );
