@@ -1,4 +1,4 @@
-'use client'
+
 import axios from "axios";
 
 
@@ -25,6 +25,6 @@ const KioskProvider = ({ children }) => {
   );
 };
 
-export { KioskContext };
+export { KioskProvider };
 
-export default KioskProvider;
+export default KioskContext;
