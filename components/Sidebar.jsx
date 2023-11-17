@@ -4,7 +4,6 @@ import { Category } from "./Category";
 
 export const Sidebar = () => {
   const { categories } = useKiosk();
-  console.log(categories);
   return (
     <>
       <Image width={300} height={100} src="/assets/img/logo.svg" alt="logo" />
