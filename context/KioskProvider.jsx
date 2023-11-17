@@ -46,8 +46,7 @@ const KioskProvider = ({ children }) => {
       // I add the product with the quantity to the order
       setOrder([...order, productQ])
     }
-
-
+    setModal(false);
   }
 
   return (
@@ -60,7 +59,8 @@ const KioskProvider = ({ children }) => {
         handleSetProduct,
         modal,
         handleChangeModal,
-        handleAddToOrder
+        handleAddToOrder,
+        order
       }}
     >
       {children}

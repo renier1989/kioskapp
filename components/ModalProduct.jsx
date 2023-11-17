@@ -1,12 +1,23 @@
 import { moneyFormat } from "@/helpers";
 import useKiosk from "@/hooks/useKiosk";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const ModalProduct = () => {
-  const { product, handleChangeModal,handleAddToOrder } = useKiosk();
+  const { product, handleChangeModal, handleAddToOrder,order } = useKiosk();
   const [quantity, setQuantity] = useState(1);
-  console.log(product);
+  const [edit, setEdit] = useState(false);
+
+  useEffect(()=>{
+    if(order.some(orderState => orderState.id === product.id))
+    {
+        const productInOrder = order.find(orderState => orderState.id === product.id);
+        setEdit(true)
+        setQuantity(productInOrder.quantity)
+    }
+  },[order,product])
+
+  
   return (
     <div className="md:flex gap-10">
       <div className="md:w-1/3">
@@ -42,10 +53,11 @@ export const ModalProduct = () => {
         </p>
 
         <div className="flex gap-5 mt-5">
-          <button 
-          onClick={()=>{
-            if(quantity<=1)return
-            setQuantity(quantity-1)}}
+          <button
+            onClick={() => {
+              if (quantity <= 1) return;
+              setQuantity(quantity - 1);
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -66,9 +78,10 @@ export const ModalProduct = () => {
           <p className="text-2xl font-bold">{quantity}</p>
 
           <button
-          onClick={()=>{
-            if(quantity>=6)return
-            setQuantity(quantity+1)}}
+            onClick={() => {
+              if (quantity >= 6) return;
+              setQuantity(quantity + 1);
+            }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -87,12 +100,14 @@ export const ModalProduct = () => {
           </button>
         </div>
 
-            <button className="bg-indigo-600 hover:bg-indigo-800 px-5 py-2 mt-5 text-white font-bold uppercase rounded"
-                onClick={()=>handleAddToOrder({...product , quantity})}
-            >
-                Add to the Order
-            </button>
+        <button
+          className="bg-indigo-600 hover:bg-indigo-800 px-5 py-2 mt-5 text-white font-bold uppercase rounded"
+          onClick={() => handleAddToOrder({ ...product, quantity })}
+        >
 
+            {!edit ? 'Add to the Order' : 'Save Changes'}
+          
+        </button>
       </div>
     </div>
   );
