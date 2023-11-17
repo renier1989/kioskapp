@@ -1,3 +1,4 @@
+import { ModalProduct } from "@/components/ModalProduct";
 import { Sidebar } from "@/components/Sidebar";
 import useKiosk from "@/hooks/useKiosk";
 import Head from "next/head";
@@ -33,7 +34,7 @@ export const Layout = ({ children, page }) => {
         isOpen={modal}
         style={customStyles}
       >
-        Modal is open
+        <ModalProduct/>
         </Modal>}
     </>
   );
