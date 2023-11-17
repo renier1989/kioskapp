@@ -4,10 +4,6 @@ import { PrismaClient } from "@prisma/client"
 
 export default async function handler(req, res) {
   const prisma = new PrismaClient()
-  const categories = await prisma.category.findMany({
-    include:{
-      products:true
-    }
-  })
-  return res.status(200).json(categories)
+  const products = await prisma.product.findMany()
+  return res.status(200).json(products)
 }
