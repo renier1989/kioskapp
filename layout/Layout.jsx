@@ -32,8 +32,9 @@ export const Layout = ({ children, page }) => {
         </aside>
         <main className="md:w-8/12 xl:w-3/4 2xl:w-4/5 h-screen overflow-y-scroll">
           <div className="p-10">
-            <Steps/>
-            {children}</div>
+            <Steps />
+            {children}
+          </div>
         </main>
       </div>
       {modal && (
@@ -41,7 +42,7 @@ export const Layout = ({ children, page }) => {
           <ModalProduct />
         </Modal>
       )}
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 };
