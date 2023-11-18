@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const { createContext, useState, useEffect } = require("react");
 
@@ -42,9 +43,11 @@ const KioskProvider = ({ children }) => {
       // if already exists the product in the order, I Update the product id the quantity changed
       const productQUpdated = order.map(orderP => orderP.id === productQ.id ? productQ : orderP)
       setOrder(productQUpdated);
+      toast.success('Order Updated! 😉');
     }else{
       // I add the product with the quantity to the order
       setOrder([...order, productQ])
+      toast.success('Added to your order! 😁');
     }
     setModal(false);
   }

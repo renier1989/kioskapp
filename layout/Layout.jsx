@@ -3,6 +3,9 @@ import { Sidebar } from "@/components/Sidebar";
 import useKiosk from "@/hooks/useKiosk";
 import Head from "next/head";
 import Modal from "react-modal";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const customStyles = {
   content: {
     top: "50%",
@@ -30,12 +33,12 @@ export const Layout = ({ children, page }) => {
           <div className="p-10">{children}</div>
         </main>
       </div>
-      {modal && <Modal
-        isOpen={modal}
-        style={customStyles}
-      >
-        <ModalProduct/>
-        </Modal>}
+      {modal && (
+        <Modal isOpen={modal} style={customStyles}>
+          <ModalProduct />
+        </Modal>
+      )}
+      <ToastContainer/>
     </>
   );
 };
