@@ -8,20 +8,19 @@ const steps = [
 export const Steps = () => {
   const route = useRouter();
 
-  const progressBar = () =>{
+  const progressBar = () => {
     let value;
-    if(route.pathname === '/' ){
-      value = 2
-    }else if(route.pathname === '/summary'){
-      value = 50
-    }else{
-      value = 100
-    } 
+    if (route.pathname === "/") {
+      value = 2;
+    } else if (route.pathname === "/summary") {
+      value = 50;
+    } else {
+      value = 100;
+    }
 
     return value;
-  }
+  };
 
-  console.log(progressBar());
   return (
     <>
       <div className="flex justify-between mb-5">
@@ -29,7 +28,6 @@ export const Steps = () => {
           <button
             onClick={() => {
               route.push(step.url);
-              
             }}
             className="text-3xl font-bold"
             key={step.step}
@@ -39,9 +37,12 @@ export const Steps = () => {
         ))}
       </div>
       <div className="bg-gray-100 mb-10">
-        <div className={`rounded-full bg-amber-500 text-xs leading-none h-2 text-center text-white`} style={{
-          width : `${progressBar()}%`
-        }}></div>
+        <div
+          className={`rounded-full bg-amber-500 text-xs leading-none h-2 text-center text-white`}
+          style={{
+            width: `${progressBar()}%`,
+          }}
+        ></div>
       </div>
     </>
   );

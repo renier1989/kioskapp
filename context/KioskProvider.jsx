@@ -37,7 +37,7 @@ const KioskProvider = ({ children }) => {
     setModal(!modal);
   };
 
-  const handleAddToOrder = ({ categoryId, image, ...productQ }) => {
+  const handleAddToOrder = ({ categoryId, ...productQ }) => {
     if (order.some((orderP) => orderP.id === productQ.id)) {
       // if already exists the product in the order, I Update the product id the quantity changed
       const productQUpdated = order.map((orderP) =>
