@@ -1,4 +1,3 @@
-import useKiosk from "@/hooks/useKiosk";
 import { useRouter } from "next/router";
 const steps = [
   { step: 1, name: "Menu", url: "/" },
@@ -7,15 +6,13 @@ const steps = [
 ];
 
 export const Steps = () => {
-  const { handleChangeStep, step } = useKiosk();
-  console.log(step);
   const route = useRouter();
 
   const progressBar = () =>{
     let value;
-    if(step === 1 ){
+    if(route.pathname === '/' ){
       value = 2
-    }else if(step === 2){
+    }else if(route.pathname === '/summary'){
       value = 50
     }else{
       value = 100
@@ -32,7 +29,7 @@ export const Steps = () => {
           <button
             onClick={() => {
               route.push(step.url);
-              handleChangeStep(step.step);
+              
             }}
             className="text-3xl font-bold"
             key={step.step}
