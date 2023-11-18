@@ -1,5 +1,6 @@
 import { ModalProduct } from "@/components/ModalProduct";
 import { Sidebar } from "@/components/Sidebar";
+import { Steps } from "@/components/Steps";
 import useKiosk from "@/hooks/useKiosk";
 import Head from "next/head";
 import Modal from "react-modal";
@@ -30,7 +31,9 @@ export const Layout = ({ children, page }) => {
           <Sidebar />
         </aside>
         <main className="md:w-8/12 xl:w-3/4 2xl:w-4/5 h-screen overflow-y-scroll">
-          <div className="p-10">{children}</div>
+          <div className="p-10">
+            <Steps/>
+            {children}</div>
         </main>
       </div>
       {modal && (
