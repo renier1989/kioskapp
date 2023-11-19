@@ -4,7 +4,6 @@ import { Layout } from "@/layout/Layout";
 
 export default function summary() {
   const { order } = useKiosk();
-  console.log(order);
   return (
     <Layout>
       <div>

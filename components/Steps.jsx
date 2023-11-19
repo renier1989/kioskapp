@@ -22,7 +22,9 @@ export const Steps = () => {
   };
 
   return (
-    <>
+    <div 
+    // id="menu-progress-bar"
+    >
       <div className="flex justify-between mb-5">
         {steps.map((step) => (
           <button
@@ -44,6 +46,6 @@ export const Steps = () => {
           }}
         ></div>
       </div>
-    </>
+    </div>
   );
 };

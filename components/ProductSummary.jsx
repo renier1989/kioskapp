@@ -1,7 +1,9 @@
 import { moneyFormat } from "@/helpers";
+import useKiosk from "@/hooks/useKiosk";
 import Image from "next/image";
 
 export const ProductSummary = ({ product }) => {
+  const {handleEditQuantity, handleDeletePoduct}  = useKiosk()
   return (
     <div className="shadow p-5 mb-3  flex gap-10 items-center">
       <div className="md:w-1/6">
@@ -25,7 +27,9 @@ export const ProductSummary = ({ product }) => {
         </div>
       </div>
       <div>
-        <button className="bg-indigo-700 px-5 py-2 rounded text-white flex gap-2 font-bold uppercase shadow-md  w-full">
+        <button 
+        onClick={()=>handleEditQuantity(product.id)}
+        className="bg-indigo-700 px-5 py-2 rounded text-white flex gap-2 font-bold uppercase shadow-md  w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -42,7 +46,9 @@ export const ProductSummary = ({ product }) => {
           </svg>
           Edit
         </button>
-        <button className="bg-red-700 px-5 py-2 rounded text-white flex gap-2 font-bold uppercase shadow-md  w-full mt-3">
+        <button 
+        onClick={()=>handleDeletePoduct(product.id)}
+        className="bg-red-700 px-5 py-2 rounded text-white flex gap-2 font-bold uppercase shadow-md  w-full mt-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -1,0 +1,41 @@
+/* #menu-progress-bar {
+    z-index: 1;
+    position: sticky;
+    top: 0;
+
+    animation: menu-progress-bar-animation auto linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+}
+
+
+@keyframes menu-progress-bar-animation {
+    to {
+        background: red !important;
+        backdrop-filter: blur() !important;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 10px 0px;
+    }
+} */
+
+#menu-progress-bar {
+    z-index: 1;
+    top: 0;
+    position: sticky;
+  
+    animation: header-animation auto linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 200px;
+  
+  }
+  
+  @keyframes header-animation {
+    to {
+      background: #f86e7a98;
+      backdrop-filter: blur(5px);
+      font-size: 16px;
+      font-weight: 400;
+      padding: 10px 0px;
+    }
+  }
