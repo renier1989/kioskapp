@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+import { moneyFormat } from "@/helpers";
 import useKiosk from "@/hooks/useKiosk";
 import { Layout } from "@/layout/Layout";
 import { useCallback, useEffect } from "react";
 
 export default function total() {
-  const {order, orderName, setOrderName} = useKiosk()
+  const {order, orderName, setOrderName, placeOrder, total} = useKiosk()
 
    const checkOrder = useCallback(()=>{
     return order.length === 0 || orderName === "" || orderName.length < 3;
@@ -14,10 +15,6 @@ export default function total() {
     checkOrder()
   },[order,checkOrder])
 
-  const placeOrder = e => {
-    e.preventDefault()
-    console.log('hola');
-  }
   return (
     <Layout>
       <div>
@@ -44,7 +41,7 @@ export default function total() {
           </div>
 
           <div className="mt-10 ">
-            <p className="text-2xl" >Total {""} <span className="font-bold">$200</span>  </p>
+            <p className="text-2xl" >Total {""} <span className="font-bold">{moneyFormat(total)}</span>  </p>
           </div>
 
           <div className="mt-5">
