@@ -24,8 +24,9 @@ export const Steps = () => {
   return (
     <div 
     // id="menu-progress-bar"
+    // className="bg-white p-1 z-10"
     >
-      <div className="flex justify-between mb-5">
+      <div className="flex justify-between mb-">
         {steps.map((step) => (
           <button
             onClick={() => {

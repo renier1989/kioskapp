@@ -20,13 +20,13 @@
 } */
 
 #menu-progress-bar {
-    z-index: 1;
+    /* z-index: 1; */
     top: 0;
     position: sticky;
   
-    animation: header-animation auto linear both;
+    /* animation: header-animation auto linear both;
     animation-timeline: scroll(root block);
-    animation-range: 0 200px;
+    animation-range: 0 200px; */
   
   }
   
