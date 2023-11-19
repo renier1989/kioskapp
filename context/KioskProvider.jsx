@@ -11,8 +11,9 @@ const KioskProvider = ({ children }) => {
   const [product, setProduct] = useState({});
   const [modal, setModal] = useState(false);
   const [order, setOrder] = useState([]);
-  
-  const router = useRouter()
+  const [orderName, setOrderName] = useState("");
+
+  const router = useRouter();
 
   const getCategories = async () => {
     const { data } = await axios(`/api/categories`);
@@ -30,7 +31,7 @@ const KioskProvider = ({ children }) => {
   const handleClickCategory = (id) => {
     const category = categories.filter((cat) => cat.id === id);
     setCurrentCategory(category[0]);
-    router.push('/')
+    router.push("/");
   };
 
   const handleSetProduct = (product) => {
@@ -56,15 +57,15 @@ const KioskProvider = ({ children }) => {
     setModal(false);
   };
 
-  const handleEditQuantity = id =>{
-    const productUpdate = order.filter(orderState => orderState.id === id)
-    setProduct(productUpdate[0])
-    setModal(!modal)
-  }
-  const handleDeletePoduct = id =>{
-    const productUpdated = order.filter(orderState => orderState.id !== id)
-    setOrder(productUpdated)
-  }
+  const handleEditQuantity = (id) => {
+    const productUpdate = order.filter((orderState) => orderState.id === id);
+    setProduct(productUpdate[0]);
+    setModal(!modal);
+  };
+  const handleDeletePoduct = (id) => {
+    const productUpdated = order.filter((orderState) => orderState.id !== id);
+    setOrder(productUpdated);
+  };
 
   return (
     <KioskContext.Provider
@@ -80,6 +81,8 @@ const KioskProvider = ({ children }) => {
         order,
         handleEditQuantity,
         handleDeletePoduct,
+        orderName,
+        setOrderName
       }}
     >
       {children}
