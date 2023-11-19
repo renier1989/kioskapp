@@ -1,13 +1,32 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+import useKiosk from "@/hooks/useKiosk";
 import { Layout } from "@/layout/Layout";
+import { useCallback, useEffect } from "react";
 
 export default function total() {
+  const {order} = useKiosk()
+
+   const checkOrder = useCallback(()=>{
+    return order.length === 0;
+  },[order]);
+
+  useEffect(()=>{
+    checkOrder()
+  },[order,checkOrder])
+
+  const placeOrder = e => {
+    e.preventDefault()
+    console.log('hola');
+  }
   return (
     <Layout>
       <div>
         <h1 className="text-4xl font-bold">Data & Total</h1>
         <p className="text-2xl my-8">Set your info & place the order.</p>
 
-        <form>
+        <form
+        onSubmit={placeOrder}
+        >
           <div >
             <label
               htmlFor="client-name"
@@ -27,7 +46,9 @@ export default function total() {
           </div>
 
           <div className="mt-5">
-            <input value="Confirm Order" className="text-center cursor-pointer w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white bg-indigo-600" />
+            <input type="submit" value="Confirm Order" className={`${checkOrder() ? 'bg-indigo-200 cursor-not-allowed':' hover:bg-indigo-800'} text-center cursor-pointer w-full lg:w-auto px-5 py-2 rounded uppercase font-bold text-white bg-indigo-600 `}
+              disabled={checkOrder()}
+            />
           </div>
         </form>
       </div>
