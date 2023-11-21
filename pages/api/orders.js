@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   const prisma = new PrismaClient();
 
   // SECTION TO GET THE ORDERS
+  
   const orders = await prisma.order.findMany({
     where:{
         state:  false

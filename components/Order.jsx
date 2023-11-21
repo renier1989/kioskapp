@@ -4,7 +4,7 @@ import Image from "next/image";
 import { toast } from "react-toastify";
 
 export default function Order({ orders }) {
-  const { id, name, total, order, date } = orders;
+  const { id, name, total, order, date, state } = orders;
   const completeOrder = async () => {
     try {
       await axios.post(`/api/orders/${id}`);
@@ -44,13 +44,19 @@ export default function Order({ orders }) {
         <p className="mt-5 font-bold text-amber-500 text-4xl">
           Total to Pay : {moneyFormat(total)}
         </p>
-        <button
+
+        {!state ? (<button
           className="py-4 px-10 bg-indigo-600 hover:bg-indigo-800 uppercase text-white rounded font-bold mt-5 md:mt-0"
           type="button"
           onClick={completeOrder}
         >
           Complete Order
-        </button>
+        </button>) : (
+            <button className="py-4 px-10 bg-green-600 hover:bg-green-800 uppercase text-white rounded font-bold mt-5 md:mt-0">
+                completed
+            </button>
+        )}
+        
       </div>
     </div>
   );

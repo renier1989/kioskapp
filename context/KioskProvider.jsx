@@ -13,6 +13,7 @@ const KioskProvider = ({ children }) => {
   const [order, setOrder] = useState([]);
   const [orderName, setOrderName] = useState("");
   const [total, setTotal] = useState(0);
+  const [stop, setStop] = useState(false); // this is to stop making orders the a maximun of orders (10) is reached
 
   const router = useRouter();
 
@@ -35,6 +36,18 @@ const KioskProvider = ({ children }) => {
     );
     setTotal(newTotal);
   }, [order]);
+
+  const getOrders = async()=> {
+    const {data} = await axios('/api/orders');
+    if(data.length >= 2){
+      setStop(true)
+    }
+  }
+  useEffect(()=>{
+    getOrders()
+  },[])
+
+
 
   // ACTIONS
   const handleClickCategory = (id) => {
@@ -114,7 +127,8 @@ const KioskProvider = ({ children }) => {
         orderName,
         setOrderName,
         placeOrder,
-        total
+        total,
+        stop
       }}
     >
       {children}
