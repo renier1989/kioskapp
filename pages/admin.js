@@ -6,7 +6,7 @@ import useSWR from "swr";
 
 export default function admin() {
   const fetcher = () => axios("/api/orders").then((order) => order.data);
-  const { data, error, isLoading } = useSWR("/api/orders", fetcher);
+  const { data, error, isLoading } = useSWR("/api/orders", fetcher, {refreshInterval: 100});
 
   return (
     <AdminLayout page={"Check Orders"}>
