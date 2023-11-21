@@ -5,7 +5,7 @@ import { Product } from "@/components/Product";
 export default function Home() {
   const { currentCategory } = useKiosk();
   return (
-    <Layout>
+    <Layout page={'Menu'}>
       <h1 className="text-4xl font-bold">{currentCategory?.name} </h1>
       <p className="text-2xl my-8">Choose and customize your order below.</p>
 

@@ -16,7 +16,7 @@ export default function total() {
   }, [order, checkOrder]);
 
   return (
-    <Layout>
+    <Layout page={'Total'}>
       <div>
         <h1 className="text-4xl font-bold">Data & Total</h1>
         <p className="text-2xl my-8">Set your info & place the order.</p>

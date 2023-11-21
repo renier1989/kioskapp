@@ -25,7 +25,7 @@ export const Layout = ({ children, page }) => {
   return (
     <>
       <Head>
-        <title>Kioskapp {page}</title>
+        <title>Kioskapp - {page}</title>
       </Head>
       <div className="md:flex">
         <aside className="md:w-4/12 xl:w-1/4 2xl:w-1/5">

@@ -5,7 +5,7 @@ import { Layout } from "@/layout/Layout";
 export default function summary() {
   const { order } = useKiosk();
   return (
-    <Layout>
+    <Layout page={'Summary'}>
       <div>
         <h1 className="text-4xl font-bold">Summary</h1>
         <p className="text-2xl my-8">Check you order.</p>
