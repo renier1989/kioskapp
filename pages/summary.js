@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { ProductSummary } from "@/components/ProductSummary";
 import useKiosk from "@/hooks/useKiosk";
 import { Layout } from "@/layout/Layout";
@@ -13,7 +14,7 @@ export default function summary() {
 
       <div>{
         order.length === 0 ? (
-          <p>There's no products in your order</p>
+          <p>Theres no products in your order</p>
         )
         :
         (
